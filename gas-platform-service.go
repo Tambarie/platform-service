@@ -17,6 +17,8 @@ func main() {
 	helper.InitializeLogDir()
 	service_address, service_port, dbtype, mongodb_port, _, mongodb_DBHost, dbName, _ := helper.LoadConfig()
 	mongoURL := fmt.Sprintf("%s://%s:%s", dbtype, mongodb_DBHost, mongodb_port)
+	fmt.Println(mongoURL)
+	fmt.Println(dbName)
 	DBRepository := ConnectToMongo(mongoURL, dbName)
 	platformService := services.New(DBRepository)
 
@@ -25,8 +27,15 @@ func main() {
 	router := gin.Default()
 	router.Use(helper.LogRequest)
 
-	router.POST("/api", platformHandler.CreatePlatform())
+	// routes
+	router.POST("/:api-gate-way/platform/categories", platformHandler.CreatePlatform())
+	router.PUT("/:api-gate-way/platform/categories/reference/:category-reference", platformHandler.UpdatePlatform())
+	router.GET("/:api-gate-way/platform/categories/reference/:category-reference", platformHandler.GetCategoryByReference())
+	router.GET("/:api-gate-way/platform/categories/name/:name", platformHandler.GetCategoryByName())
+	router.GET("/:api-gate-way/platform/categories/list/page/:page", platformHandler.GetPlatformPage())
+	router.DELETE("/:api-gate-way/platform/categories/reference/:category-reference", platformHandler.DeleteCategoryByReference())
 
+	// No route
 	router.NoRoute(func(ctx *gin.Context) {
 		ctx.JSON(404, helper.PrintErrorMessage("404", shared.NORESOURCEFOUND))
 	})
@@ -43,5 +52,6 @@ func ConnectToMongo(mongoURL string, DBName string) ports.PlatformRepository {
 		_ = helper.PrintErrorMessage("500", err.Error())
 		log.Fatal(err)
 	}
+
 	return services.New(repo)
 }
