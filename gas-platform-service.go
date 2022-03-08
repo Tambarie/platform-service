@@ -27,13 +27,21 @@ func main() {
 	router := gin.Default()
 	router.Use(helper.LogRequest)
 
-	// routes
+	// Category routes
 	router.POST("/:api-gate-way/platform/categories", platformHandler.CreatePlatform())
 	router.PUT("/:api-gate-way/platform/categories/reference/:category-reference", platformHandler.UpdatePlatform())
 	router.GET("/:api-gate-way/platform/categories/reference/:category-reference", platformHandler.GetCategoryByReference())
 	router.GET("/:api-gate-way/platform/categories/name/:name", platformHandler.GetCategoryByName())
 	router.GET("/:api-gate-way/platform/categories/list/page/:page", platformHandler.GetPlatformPage())
 	router.DELETE("/:api-gate-way/platform/categories/reference/:category-reference", platformHandler.DeleteCategoryByReference())
+
+	// SubCategory routes
+	router.POST("/:api-gate-way/platform/sub-categories", platformHandler.CreateSubCategory())
+	router.PUT("/:api-gate-way/platform/sub-categories/:sub-category-reference", platformHandler.UpdateSubCategory())
+	router.GET("/:api-gate-way/platform/sub-categories/reference/:sub-category-reference", platformHandler.GetSubCategoryByReference())
+	router.GET("/:api-gate-way/platform/sub-categories/name/:name", platformHandler.GetSubCategoryByName())
+	router.GET("/:api-gate-way/platform/sub-categories/list/page/:page", platformHandler.GetSubCategoryList())
+	router.DELETE("/:api-gate-way/platform/sub-categories/reference/:sub-category-reference", platformHandler.DeleteSubCategoryByReference())
 
 	// No route
 	router.NoRoute(func(ctx *gin.Context) {
