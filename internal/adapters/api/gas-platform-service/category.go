@@ -12,7 +12,7 @@ import (
 	"strconv"
 )
 
-func (h *HTTPHandler) CreatePlatform() gin.HandlerFunc {
+func (h *HTTPHandler) CreateCategory() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		platform := &domain.Category{}
 		platform.Reference = uuid.New().String()
@@ -34,7 +34,7 @@ func (h *HTTPHandler) CreatePlatform() gin.HandlerFunc {
 	}
 }
 
-func (h *HTTPHandler) UpdatePlatform() gin.HandlerFunc {
+func (h *HTTPHandler) UpdateCategory() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		categoryReference := ctx.Param("category-reference")
 		platform := &domain.Category{}
@@ -94,7 +94,7 @@ func (h *HTTPHandler) GetCategoryByName() gin.HandlerFunc {
 	}
 }
 
-func (h *HTTPHandler) GetPlatformPage() gin.HandlerFunc {
+func (h *HTTPHandler) GetCategoryList() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		page := ctx.Param("page")
 
