@@ -64,6 +64,29 @@ func (s *Service) DeleteSubCategoryByReference(reference string) (interface{}, e
 	return s.platformRepository.DeleteSubCategoryByReference(reference)
 }
 
+func (s *Service) CreateState(state *domain.State) (*domain.State, error) {
+	if err := helper.Validate(state); err != nil {
+		return nil, err
+	}
+	return s.platformRepository.CreateState(state)
+}
+
+func (s *Service) UpdateState(stateReference string, state *domain.State) (*domain.State, error) {
+	return s.platformRepository.UpdateState(stateReference, state)
+}
+
+func (s *Service) GetStateByReference(reference string) ([]*domain.State, error) {
+	return s.platformRepository.GetStateByReference(reference)
+}
+
+func (s *Service) GetStateList(page int64) ([]*domain.State, error, int64) {
+	return s.platformRepository.GetStateList(page)
+}
+
+func (s *Service) DeleteStateByReference(reference string) (interface{}, error) {
+	return s.platformRepository.DeleteStateByReference(reference)
+}
+
 func New(platformRepository ports.PlatformRepository) *Service {
 	return &Service{platformRepository: platformRepository}
 }
