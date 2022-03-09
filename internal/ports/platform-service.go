@@ -16,4 +16,10 @@ type PlatformService interface {
 	GetSubCategoryByName(reference string) ([]*domain.SubCategory, error)
 	GetSubCategoryList(page int64) ([]*domain.SubCategory, error, int64)
 	DeleteSubCategoryByReference(reference string) (interface{}, error)
+
+	CreateState(state *domain.State) (*domain.State, error)
+	GetStateByReference(reference string) ([]*domain.State, error)
+	UpdateState(stateReference string, state *domain.State) (*domain.State, error)
+	GetStateList(page int64) ([]*domain.State, error, int64)
+	DeleteStateByReference(reference string) (interface{}, error)
 }
