@@ -17,8 +17,6 @@ func main() {
 	helper.InitializeLogDir()
 	service_address, service_port, dbtype, mongodb_port, _, mongodb_DBHost, dbName, _ := helper.LoadConfig()
 	mongoURL := fmt.Sprintf("%s://%s:%s", dbtype, mongodb_DBHost, mongodb_port)
-	fmt.Println(mongoURL)
-	fmt.Println(dbName)
 	DBRepository := ConnectToMongo(mongoURL, dbName)
 	platformService := services.New(DBRepository)
 
