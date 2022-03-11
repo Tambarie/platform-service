@@ -7,8 +7,6 @@ import (
 	"log"
 	"net/http"
 	domain "platform-service/internal/core/domain/gas-platform-service"
-	"platform-service/internal/core/helper"
-	"platform-service/internal/core/shared"
 	"strconv"
 )
 
@@ -47,18 +45,18 @@ func (h *HTTPHandler) UpdateSubCategory() gin.HandlerFunc {
 		// checking if category reference exists in the database
 		reference, err := h.platformService.GetSubCategoryByReference(subCategoryReference)
 		if err != nil {
-			ctx.JSON(404, helper.PrintErrorMessage("404", shared.REQUEST_NOT_FOUND))
+			ctx.AbortWithStatusJSON(500, err)
 			return
 		}
 		if len(reference) != 0 {
 			_, err = h.platformService.UpdateSubCategory(subCategoryReference, platform)
 			if err != nil {
-				ctx.JSON(404, helper.PrintErrorMessage("404", shared.REQUEST_NOT_FOUND))
+				ctx.AbortWithStatusJSON(500, err)
 				return
 			}
 			ctx.JSON(200, nil)
 		} else {
-			ctx.JSON(404, helper.PrintErrorMessage("404", shared.REQUEST_NOT_FOUND))
+			ctx.AbortWithStatusJSON(500, err)
 		}
 
 	}
@@ -90,7 +88,6 @@ func (h *HTTPHandler) GetSubCategoryByName() gin.HandlerFunc {
 		ctx.JSON(200, gin.H{
 			"platform": platform,
 		})
-
 	}
 }
 
@@ -137,7 +134,7 @@ func (h *HTTPHandler) DeleteSubCategoryByReference() gin.HandlerFunc {
 				"reference": platform,
 			})
 		} else {
-			ctx.JSON(404, helper.PrintErrorMessage("404", shared.REQUEST_NOT_FOUND))
+			ctx.AbortWithStatusJSON(500, err)
 		}
 
 	}
