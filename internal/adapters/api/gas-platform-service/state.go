@@ -39,7 +39,7 @@ func (h *HTTPHandler) UpdateState() gin.HandlerFunc {
 		state := &domain.State{}
 		err := ctx.BindJSON(state)
 		if err != nil {
-			ctx.JSON(http.StatusBadRequest, "could not bind json")
+			ctx.AbortWithStatusJSON(500, err)
 			return
 		}
 
@@ -52,12 +52,12 @@ func (h *HTTPHandler) UpdateState() gin.HandlerFunc {
 		if len(reference) != 0 {
 			_, err = h.platformService.UpdateState(stateReference, state)
 			if err != nil {
-				ctx.JSON(404, helper.PrintErrorMessage("404", shared.REQUEST_NOT_FOUND))
+				ctx.AbortWithStatusJSON(500, err)
 				return
 			}
 			ctx.JSON(200, nil)
 		} else {
-			ctx.JSON(404, helper.PrintErrorMessage("404", shared.REQUEST_NOT_FOUND))
+			ctx.AbortWithStatusJSON(500, err)
 		}
 
 	}
@@ -106,7 +106,7 @@ func (h *HTTPHandler) DeleteStateByReference() gin.HandlerFunc {
 				"reference": state,
 			})
 		} else {
-			ctx.JSON(404, helper.PrintErrorMessage("404", shared.REQUEST_NOT_FOUND))
+			ctx.AbortWithStatusJSON(500, err)
 		}
 
 	}
