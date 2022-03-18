@@ -1,7 +1,7 @@
 package api
 
 import (
-	"platform-service/internal/ports"
+	"gas-platform-service/internal/ports"
 )
 
 type HTTPHandler struct {
