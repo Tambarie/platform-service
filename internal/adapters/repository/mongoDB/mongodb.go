@@ -1,11 +1,11 @@
 package mongoDB
 
 import (
+	"gas-platform-service/internal/ports"
 	"github.com/pkg/errors"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/net/context"
-	"platform-service/internal/ports"
 	"time"
 )
 
