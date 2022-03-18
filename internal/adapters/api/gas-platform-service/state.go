@@ -1,13 +1,13 @@
 package api
 
 import (
+	domain "gas-platform-service/internal/core/domain/gas-platform-service"
+	"gas-platform-service/internal/core/helper"
+	"gas-platform-service/internal/core/shared"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"log"
 	"net/http"
-	domain "platform-service/internal/core/domain/gas-platform-service"
-	"platform-service/internal/core/helper"
-	"platform-service/internal/core/shared"
 	"strconv"
 )
 
