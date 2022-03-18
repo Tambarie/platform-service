@@ -1,6 +1,6 @@
 package ports
 
-import domain "platform-service/internal/core/domain/gas-platform-service"
+import domain "gas-platform-service/internal/core/domain/gas-platform-service"
 
 type PlatformService interface {
 	CreateCategory(platform *domain.Category) (*domain.Category, error)
