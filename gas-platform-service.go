@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
+	api "gas-platform-service/internal/adapters/api/gas-platform-service"
+	"gas-platform-service/internal/adapters/repository/mongoDB"
+	"gas-platform-service/internal/core/helper"
+	services "gas-platform-service/internal/core/services/gas-platform-service"
+	"gas-platform-service/internal/core/shared"
+	"gas-platform-service/internal/ports"
 	"github.com/gin-gonic/gin"
 	"log"
-	api "platform-service/internal/adapters/api/gas-platform-service"
-	"platform-service/internal/adapters/repository/mongoDB"
-	"platform-service/internal/core/helper"
-	services "platform-service/internal/core/services/gas-platform-service"
-	"platform-service/internal/core/shared"
-	"platform-service/internal/ports"
 	"time"
 )
 
