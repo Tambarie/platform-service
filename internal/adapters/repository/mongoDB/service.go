@@ -2,12 +2,12 @@ package mongoDB
 
 import (
 	"fmt"
+	domain "gas-platform-service/internal/core/domain/gas-platform-service"
+	"gas-platform-service/internal/core/helper"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/net/context"
 	"log"
-	domain "platform-service/internal/core/domain/gas-platform-service"
-	"platform-service/internal/core/helper"
 )
 
 func (m *MongoRepository) CreateCategory(platform *domain.Category) (*domain.Category, error) {
