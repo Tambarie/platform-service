@@ -1,4 +1,4 @@
-module platform-service
+module gas-platform-service
 
 go 1.17
 
