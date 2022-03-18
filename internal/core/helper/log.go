@@ -3,12 +3,12 @@ package helper
 import (
 	"bytes"
 	"encoding/json"
+	"gas-platform-service/internal/core/shared"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"log"
 	"net/http"
 	"os"
-	"platform-service/internal/core/shared"
 	"strconv"
 	"time"
 )
