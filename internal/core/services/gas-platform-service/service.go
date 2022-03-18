@@ -1,9 +1,9 @@
 package services
 
 import (
-	domain "platform-service/internal/core/domain/gas-platform-service"
-	"platform-service/internal/core/helper"
-	"platform-service/internal/ports"
+	domain "gas-platform-service/internal/core/domain/gas-platform-service"
+	"gas-platform-service/internal/core/helper"
+	"gas-platform-service/internal/ports"
 )
 
 type Service struct {
