@@ -2,11 +2,11 @@ package api
 
 import (
 	"fmt"
+	domain "gas-platform-service/internal/core/domain/gas-platform-service"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"log"
 	"net/http"
-	domain "platform-service/internal/core/domain/gas-platform-service"
 	"strconv"
 )
 
